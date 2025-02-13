@@ -1,0 +1,17 @@
+{
+  "name": "meli_challenge",
+  "version": "1.0.0",
+  "description": "Repositorio para reto técnico de automatización para MELI",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.50.1",
+    "ts-node": "^10.9.2"
+  }
+}
