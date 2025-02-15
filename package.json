@@ -4,7 +4,8 @@
   "description": "Repositorio para reto técnico de automatización para MELI",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js test"
+    "test": "cucumber-js test",
+    "generate-report": "npx ts-node src/helper/report.ts"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +13,8 @@
   "devDependencies": {
     "@cucumber/cucumber": "^11.2.0",
     "@playwright/test": "^1.50.1",
+    "multiple-cucumber-html-reporter": "^3.9.0",
+    "playwright-stealth": "^0.0.1",
     "ts-node": "^10.9.2"
   }
 }

@@ -1,33 +1,40 @@
 import { Given, When, Then } from '@cucumber/cucumber';
-import { chromium, Page, Browser, BrowserContext } from '@playwright/test';
+import { pageFixture } from '../../hooks/pageFixture';
+import { GooglePage } from '../../pages/GooglePage';
+import { MercadoLibrePage } from '../../pages/MercadoLibrePage';
 
-let browser: Browser;
-let page: Page;
-let context: BrowserContext;
+let googlePage: GooglePage;
+let meliPage: MercadoLibrePage; 
 
-Given('user who browses the Google search engine', async () => {
-    browser = await chromium.launch({ headless: false, channel: 'chrome' });
-    context = await browser.newContext();
-    page = await context.newPage();
-    await page.goto("https://www.google.com.co");
+Given('that the user is on the Google search engine', async () => {
+    googlePage = new GooglePage(pageFixture.page);
+    await googlePage.openGoogle();
+    await googlePage.implicitWait();
+    await googlePage.humanActions();
 });
 
-Given('searches for {string}', async (productName) => {
-    await page.mouse.move(Math.random() * 800, Math.random() * 800);
-    await page.locator("xpath=//textarea[@title='Buscar']").fill(productName);
-    await page.keyboard.press("Enter");
+Given('searches for {string}', async (wordToSearch) => {
+    await googlePage.searchWord(wordToSearch);
+    await googlePage.implicitWait();
 });
 
-When('enters the option of the Mercado Libre website', async () => {
-    await page.locator("xpath=//h3[contains(text(), 'Creatinas | MercadoLibre')]").click();
+When('the user clicks on the link {string}', async (nameLink) => {
+    await googlePage.clickLink(nameLink);
+    await googlePage.implicitWait();
 });
 
-When('filters the products by the brand {string}', async (brandName) => {
-    await page.close();
-    await browser.close();
+When('applies the filter for the brand {string}', async (productBrand) => {
+    meliPage = new MercadoLibrePage(pageFixture.page);
+    await meliPage.acceptCookies();
+    await meliPage.applyBrandFilter(productBrand);
+    await googlePage.implicitWait();
 });
 
-Then('validates the information of the first product', async () => {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
+Then('the user should see the {string} product of that brand', async (numberProduct) => {
+    await meliPage.seeProductListInformation(numberProduct);
+    await googlePage.implicitWait();
+});
+
+Then('validate the price of the first product', async () => {
+    await meliPage.validatePriceEquality();
 });
