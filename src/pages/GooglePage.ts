@@ -1,5 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 import { GooglePageLocators } from "./Locators";
+import { routesModule } from "../utils/routes";
 
 export class GooglePage {
     readonly page: Page;
@@ -11,7 +12,7 @@ export class GooglePage {
     }
 
     async openGoogle() {
-        await this.page.goto("https://www.google.com/", { waitUntil: 'load' });
+        await this.page.goto(routesModule.GOOGLE_ROUTE, { waitUntil: 'load' });
     }
 
     async searchWord (wordToSearch: string) {

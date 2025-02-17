@@ -1,5 +1,6 @@
 import { expect, Locator, Page } from "@playwright/test";
 import { MercadoLibrePageLocators } from "./Locators";
+import { routesModule } from "../utils/routes";
 
 export class MercadoLibrePage {
     readonly page: Page;
@@ -37,5 +38,9 @@ export class MercadoLibrePage {
 
     async validatePriceEquality() {
         await expect(this.spanProductDetailPrice).toHaveText(this.productListPrice);
+    }
+
+    async validateRoute() {
+        await expect(this.page).toHaveURL(routesModule.MELI_CREATINE_ROUTE);
     }
 }

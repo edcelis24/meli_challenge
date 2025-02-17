@@ -25,6 +25,7 @@ When('the user clicks on the link {string}', async (nameLink) => {
 
 When('applies the filter for the brand {string}', async (productBrand) => {
     meliPage = new MercadoLibrePage(pageFixture.page);
+    await meliPage.validateRoute();
     await meliPage.acceptCookies();
     await meliPage.applyBrandFilter(productBrand);
     await googlePage.implicitWait();
