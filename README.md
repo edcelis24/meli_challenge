@@ -1,12 +1,12 @@
 # Reto de automatización para Meli
 
-_Se debe automatizar la búsqueda de un producto utilizando Playwright, Cucumber y JavaScript o TypeScript.
+Se debe automatizar la búsqueda de un producto utilizando Playwright, Cucumber y JavaScript o TypeScript.
 
 * En google buscar la palabra "creatina mercado libre" y del listado que aparece, presionar en el texto que dice "Creatina | MercadoLibre" (sitio de mercado libre)
 * Una vez en la página de Mercado Libre debes aceptar las cookies (en caso que aparezca el mensaje)
 * Filtrar la marca "MuscleTech" usando la búsqueda avanzada 
 * En el resultado de productos guardaremos el precio del primer registro y presionaremos sobre el ítem
-* En el detalle del producto validar que el precio del listing sea el mismo que aparece en el detalle del producto_
+* En el detalle del producto validar que el precio del listing sea el mismo que aparece en el detalle del producto
 
 ### Pre-requisitos 📋
 
@@ -56,7 +56,7 @@ https://github.com/edcelis24/meli_challenge.git
 ```
 cd meli_challenge
 ```
-
+s
 3. Crear rama para trabajar dentro del proyecto de pruebas.
 
 ```
@@ -73,7 +73,7 @@ npm i
 
 1. Abrir el proyecto de pruebas en la consola.
 ```
-cd cd meli_challenge
+cd meli_challenge
 ```
 2. Ejecutar el comando para iniciar las pruebas.
 ```
